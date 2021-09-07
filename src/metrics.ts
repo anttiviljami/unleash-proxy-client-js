@@ -42,7 +42,7 @@ export default class Metrics {
         this.started = new Date();
         this.clientKey = clientKey;
         this.resetBucket();
-        this.fetch = fetch ?? global.fetch
+        this.fetch = fetch ?? globalThis?.fetch ?? window?.fetch
 
         if (typeof this.metricsInterval === 'number' && this.metricsInterval > 0) {
             // send first metrics after two seconds.

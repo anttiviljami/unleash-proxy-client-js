@@ -18,7 +18,7 @@ export interface IMutableContext {
 }
 
 export type IContext = IStaticContext & IMutableContext;
-export type IFetch = typeof global.fetch
+export type IFetch = typeof globalThis.fetch
 export { IStorageProvider }
 
 export interface IConfig extends IStaticContext {
@@ -104,7 +104,7 @@ export class UnleashClient extends TinyEmitter {
             } 
             resolve();    
         });
-        this.fetch = fetch ?? global.fetch
+        this.fetch = fetch ?? globalThis?.fetch ?? window?.fetch
         
 
         this.metrics = new Metrics({
